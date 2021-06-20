@@ -1,0 +1,69 @@
+using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+using Microsoft.Extensions.Configuration;
+using NotebookAPI.Contracts.Responses;
+using NotebookAPI.Handlers.Notes;
+using NotebookAPI.Mapping;
+using NotebookAPI.Queries.Notes;
+using NUnit.Framework;
+
+namespace NotebookAPITests.HandlerTests.Notes
+{
+    [TestFixture]
+    public class GetNoteByIdHandlerTests
+    {
+        private IMapper _mapper;
+        private IConfiguration _configuration;
+        
+        [SetUp]
+        public void Setup()
+        {
+            var testConfiguration = new Dictionary<string, string>
+            {
+                {"ConnectionStrings:DefaultConnection", "Server=127.0.0.1; port=5432; user id = postgres; password = coderslab; database=notebookDB; pooling = true"},
+                {"AllowedHosts", "*"}
+            };
+
+            _configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(testConfiguration)
+                .Build();
+            
+            var mockMapper = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainToResponse());
+            });
+            _mapper = mockMapper.CreateMapper();
+        }
+
+        [Test]
+        public void GetNoteByIdHandler_GetFirstNote_ShouldReturnFirstNote()
+        {
+            var getAllNotesHandler = new GetAllNotesHandler(_mapper, _configuration);
+            var allNotesQuery = new GetAllNotesQuery();
+            var firstNote= getAllNotesHandler
+                .Handle(allNotesQuery, new System.Threading.CancellationToken()).Result.FirstOrDefault();
+
+            var getNoteByIdHandler = new GetNoteByIdHandler(_mapper, _configuration);
+            var query = new GetNoteByIdQuery(firstNote.Id);
+            var result = getNoteByIdHandler
+                .Handle(query, new System.Threading.CancellationToken()).Result;
+            
+            Assert.IsInstanceOf(typeof(NoteResponse), result);
+            
+        }
+        
+        [Test]
+        public void GetNoteByIdHandler_GetNotExistingNote_ShouldReturnEmptyObject()
+        {
+            var notExistingNoteId = -1;
+                
+            var getNoteByIdHandler = new GetNoteByIdHandler(_mapper, _configuration);
+            var query = new GetNoteByIdQuery(notExistingNoteId);
+            var result = getNoteByIdHandler
+                .Handle(query, new System.Threading.CancellationToken()).Result;
+
+            Assert.Null(result);
+        }
+    }
+}
