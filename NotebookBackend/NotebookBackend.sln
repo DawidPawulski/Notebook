@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotebookAPI", "NotebookAPI\NotebookAPI.csproj", "{0610380F-49ED-40CC-8D42-4FE0EA6B7004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotebookAPITests", "NotebookAPITests\NotebookAPITests.csproj", "{635CEB2C-B28D-4E37-BA27-813C91B83C91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0610380F-49ED-40CC-8D42-4FE0EA6B7004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0610380F-49ED-40CC-8D42-4FE0EA6B7004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0610380F-49ED-40CC-8D42-4FE0EA6B7004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0610380F-49ED-40CC-8D42-4FE0EA6B7004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635CEB2C-B28D-4E37-BA27-813C91B83C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635CEB2C-B28D-4E37-BA27-813C91B83C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635CEB2C-B28D-4E37-BA27-813C91B83C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635CEB2C-B28D-4E37-BA27-813C91B83C91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
