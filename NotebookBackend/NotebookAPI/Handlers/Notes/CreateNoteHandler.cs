@@ -57,7 +57,7 @@ namespace NotebookAPI.Handlers.Notes
 
             var response = _mapper.Map<NoteResponse>(newNote);
             
-            return await Task.FromResult(response);
+            return response;
         }
     }
 }

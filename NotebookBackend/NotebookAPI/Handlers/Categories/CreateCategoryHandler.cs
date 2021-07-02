@@ -27,7 +27,7 @@ namespace NotebookAPI.Handlers.Categories
             await _context.SaveChangesAsync(cancellationToken);
             var response = _mapper.Map<CategoryResponse>(newCategory);
             
-            return await Task.FromResult(response);
+            return response;
         }
     }
 }

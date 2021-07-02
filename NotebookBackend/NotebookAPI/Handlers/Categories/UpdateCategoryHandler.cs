@@ -34,7 +34,7 @@ namespace NotebookAPI.Handlers.Categories
 
             var response = _mapper.Map<CategoryResponse>(category);
 
-            return await Task.FromResult(response);
+            return response;
         }
     }
 }
