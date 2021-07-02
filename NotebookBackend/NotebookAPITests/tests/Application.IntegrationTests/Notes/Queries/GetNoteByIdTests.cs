@@ -3,15 +3,15 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using NotebookAPI.Contracts.Responses;
-using NotebookAPI.Handlers.Categories;
+using NotebookAPI.Handlers.Notes;
 using NotebookAPI.Mapping;
-using NotebookAPI.Queries.Categories;
+using NotebookAPI.Queries.Notes;
 using NUnit.Framework;
 
-namespace NotebookAPITests.HandlerTests.Categories
+namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Queries
 {
     [TestFixture]
-    public class GetCategoryByIdHandlerTests
+    public class GetNoteByIdTests
     {
         private IMapper _mapper;
         private IConfiguration _configuration;
@@ -37,32 +37,32 @@ namespace NotebookAPITests.HandlerTests.Categories
         }
 
         [Test]
-        public void GetCategoryByIdHandler_GetFirstCategory_ShouldReturnFirstCategory()
+        public void GetNoteById_GetFirstNote_ShouldReturnFirstNote()
         {
-            var getAllCategoriesHandler = new GetAllCategoriesHandler(_mapper, _configuration);
-            var allCategoriesQuery = new GetAllCategoriesQuery();
-            var firstCategory = getAllCategoriesHandler
-                .Handle(allCategoriesQuery, new System.Threading.CancellationToken()).Result.FirstOrDefault();
+            var getAllNotesHandler = new GetAllNotesHandler(_mapper, _configuration);
+            var allNotesQuery = new GetAllNotesQuery();
+            var firstNote= getAllNotesHandler
+                .Handle(allNotesQuery, new System.Threading.CancellationToken()).Result.FirstOrDefault();
 
-            var getCategoryByIdHandler = new GetCategoryByIdHandler(_mapper, _configuration);
-            var query = new GetCategoryByIdQuery(firstCategory.Id);
-            var result = getCategoryByIdHandler
+            var getNoteByIdHandler = new GetNoteByIdHandler(_mapper, _configuration);
+            var query = new GetNoteByIdQuery(firstNote.Id);
+            var result = getNoteByIdHandler
                 .Handle(query, new System.Threading.CancellationToken()).Result;
             
-            Assert.IsInstanceOf(typeof(CategoryResponse), result);
+            Assert.IsInstanceOf(typeof(NoteResponse), result);
             
         }
         
         [Test]
-        public void GetCategoryByIdHandler_GetNotExistingCategory_ShouldReturnEmptyObject()
+        public void GetNoteById_GetNotExistingNote_ShouldReturnEmptyObject()
         {
-            var notExistingCategoryId = -1;
-  
-            var getCategoryByIdHandler = new GetCategoryByIdHandler(_mapper, _configuration);
-            var query = new GetCategoryByIdQuery(notExistingCategoryId);
-            var result = getCategoryByIdHandler
+            var notExistingNoteId = -1;
+                
+            var getNoteByIdHandler = new GetNoteByIdHandler(_mapper, _configuration);
+            var query = new GetNoteByIdQuery(notExistingNoteId);
+            var result = getNoteByIdHandler
                 .Handle(query, new System.Threading.CancellationToken()).Result;
-            
+
             Assert.Null(result);
         }
     }

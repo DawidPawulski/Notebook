@@ -7,10 +7,10 @@ using NotebookAPI.Handlers.Categories;
 using NotebookAPI.Mapping;
 using NUnit.Framework;
 
-namespace NotebookAPITests.HandlerTests.Categories
+namespace NotebookAPITests.tests.Application.IntegrationTests.Categories.Commands
 {
     [TestFixture]
-    public class CreateCategoryHandlerTests
+    public class CreateCategoryTests
     {
         private DbContextOptions<DataContext> _options;
         private IMapper _mapper;
@@ -38,7 +38,7 @@ namespace NotebookAPITests.HandlerTests.Categories
         }
 
         [Test]
-        public void CreateCategoryHandler_CreateNewCategory_ShouldHaveNewCategoryInDatabase()
+        public void CreateCategory_CreateNewCategory_ShouldHaveNewCategoryInDatabase()
         {
             var expectedNewCategoriesLength = 5;
             var newCategoryName = "Weekend";
@@ -60,7 +60,7 @@ namespace NotebookAPITests.HandlerTests.Categories
         }
         
         [Test]
-        public void CreateCategoryHandler_CreateNewCategoryWithName_ShouldReturnNewCategoryName()
+        public void CreateCategory_CreateNewCategoryWithName_ShouldReturnNewCategoryName()
         {
             var newCategoryName = "Weekend";
 

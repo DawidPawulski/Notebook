@@ -1,16 +1,16 @@
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using NotebookAPI.Commands.Categories;
+using NotebookAPI.Commands.Notes;
 using NotebookAPI.Data;
-using NotebookAPI.Handlers.Categories;
+using NotebookAPI.Handlers.Notes;
 using NotebookAPI.Mapping;
 using NUnit.Framework;
 
-namespace NotebookAPITests.HandlerTests.Categories
+namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Commands
 {
     [TestFixture]
-    public class DeleteCategoryHandlerTests
+    public class DeleteNoteTests
     {
         private DbContextOptions<DataContext> _options;
         private IMapper _mapper;
@@ -22,7 +22,7 @@ namespace NotebookAPITests.HandlerTests.Categories
             _fakeData = new FakeData();
             
             _options = new DbContextOptionsBuilder<DataContext>()
-                .UseInMemoryDatabase(databaseName: "Delete Category Handler Test")
+                .UseInMemoryDatabase(databaseName: "Delete Note Handler Test")
                 .Options;
 
             using(var context = new DataContext(_options))
@@ -38,35 +38,35 @@ namespace NotebookAPITests.HandlerTests.Categories
         }
 
         [Test]
-        public void DeleteCategoryHandler_DeleteFirstCategory_ShouldReturnListWithOneCategoryLess()
+        public void DeleteNote_DeleteFirstNote_ShouldReturnListWithOneNoteLess()
         {
-            var firstCategoryId = 1;
-            var expectedListCount = 3;
+            var firstNoteId = 1;
+            var expectedListCount = 2;
 
             using(var context = new DataContext(_options))
             {
-                var deleteCategoryHandler = new DeleteCategoryHandler(context, _mapper);
-                var query = new DeleteCategoryCommand(firstCategoryId);
+                var deleteNoteHandler = new DeleteNoteHandler(context, _mapper);
+                var query = new DeleteNoteCommand(firstNoteId);
 
-                deleteCategoryHandler.Handle(query, new System.Threading.CancellationToken());
+                deleteNoteHandler.Handle(query, new System.Threading.CancellationToken());
 
-                var allCategoriesListCount = context.Categories.Count();
+                var allNotesListCount = context.Notes.Count();
                 
-                Assert.AreEqual(expectedListCount, allCategoriesListCount);
+                Assert.AreEqual(expectedListCount, allNotesListCount);
             }
         }
         
         [Test]
-        public void DeleteNoteHandler_DeleteNotExistingNote_ShouldReturnNull()
+        public void DeleteNote_DeleteNotExistingNote_ShouldReturnNull()
         {
             var notExistingNote = 10;
 
             using(var context = new DataContext(_options))
             {
-                var deleteCategoryHandler = new DeleteCategoryHandler(context, _mapper);
-                var query = new DeleteCategoryCommand(notExistingNote);
+                var deleteNoteHandler = new DeleteNoteHandler(context, _mapper);
+                var query = new DeleteNoteCommand(notExistingNote);
 
-                var result = deleteCategoryHandler
+                var result = deleteNoteHandler
                     .Handle(query, new System.Threading.CancellationToken()).Result;
 
                 Assert.Null(result);

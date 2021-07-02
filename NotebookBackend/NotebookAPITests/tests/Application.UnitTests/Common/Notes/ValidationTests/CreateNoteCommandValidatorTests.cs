@@ -3,7 +3,7 @@ using NotebookAPI.Commands.Notes;
 using NotebookAPI.Validation.Notes;
 using NUnit.Framework;
 
-namespace NotebookAPITests.ValidationTests.Notes
+namespace NotebookAPITests.tests.Application.UnitTests.Common.Notes.ValidationTests
 {
     [TestFixture]
     public class CreateNoteCommandValidatorTests

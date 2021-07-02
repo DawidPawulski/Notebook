@@ -6,10 +6,10 @@ using NotebookAPI.Handlers.Categories;
 using NotebookAPI.Mapping;
 using NUnit.Framework;
 
-namespace NotebookAPITests.HandlerTests.Categories
+namespace NotebookAPITests.tests.Application.IntegrationTests.Categories.Commands
 {
     [TestFixture]
-    public class UpdateCategoryHandlerTests
+    public class UpdateCategoryTests
     {
         private DbContextOptions<DataContext> _options;
         private IMapper _mapper;
@@ -37,7 +37,7 @@ namespace NotebookAPITests.HandlerTests.Categories
         }
 
         [Test]
-        public void UpdateCategoryHandler_UpdateFirstCategory_ShouldReturnNewCategoryName()
+        public void UpdateCategory_UpdateFirstCategory_ShouldReturnNewCategoryName()
         {
             var firstCategoryId = 1;
             var newCategoryName = "update";
@@ -60,7 +60,7 @@ namespace NotebookAPITests.HandlerTests.Categories
         }
 
         [Test]
-        public void UpdateCategoryHandler_UpdateNotExistingCategory_ShouldReturnNull()
+        public void UpdateCategory_UpdateNotExistingCategory_ShouldReturnNull()
         {
             var notExistingCategory = 10;
             var newCategoryName = "update";

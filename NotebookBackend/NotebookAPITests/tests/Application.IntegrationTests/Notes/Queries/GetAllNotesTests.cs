@@ -1,19 +1,19 @@
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using NotebookAPI.Handlers.Categories;
+using NotebookAPI.Handlers.Notes;
 using NotebookAPI.Mapping;
-using NotebookAPI.Queries.Categories;
+using NotebookAPI.Queries.Notes;
 using NUnit.Framework;
 
-namespace NotebookAPITests.HandlerTests.Categories
+namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Queries
 {
     [TestFixture]
-    public class GetAllCategoriesHandlerTests
+    public class GetAllNotesTests
     {
         private IMapper _mapper;
         private IConfiguration _configuration;
-
+        
         [SetUp]
         public void Setup()
         {
@@ -35,14 +35,15 @@ namespace NotebookAPITests.HandlerTests.Categories
         }
 
         [Test]
-        public void GetAllNotesCategories_ExecuteHandler_ShouldReturnListWithAllCategories()
+        public void GetAllNotes_ExecuteHandler_ShouldReturnListWithAllNotes()
         {
-            var getAllCategoriesHandler = new GetAllCategoriesHandler(_mapper, _configuration);
-            var query = new GetAllCategoriesQuery();
-            var result = getAllCategoriesHandler
+            var getAllNotesHandler = new GetAllNotesHandler(_mapper, _configuration);
+            var query = new GetAllNotesQuery();
+            var result = getAllNotesHandler
                 .Handle(query, new System.Threading.CancellationToken()).Result;
             
             Assert.True(result.Count > 0);
+            
         }
     }
 }

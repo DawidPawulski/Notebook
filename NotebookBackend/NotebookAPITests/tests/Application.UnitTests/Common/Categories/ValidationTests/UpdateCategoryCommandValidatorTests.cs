@@ -3,7 +3,7 @@ using NotebookAPI.Commands.Categories;
 using NotebookAPI.Validation.Categories;
 using NUnit.Framework;
 
-namespace NotebookAPITests.ValidationTests.Categories
+namespace NotebookAPITests.tests.Application.UnitTests.Common.Categories.ValidationTests
 {
     [TestFixture]
     public class UpdateCategoryCommandValidatorTests

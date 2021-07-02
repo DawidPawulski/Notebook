@@ -9,10 +9,10 @@ using NotebookAPI.Handlers.Notes;
 using NotebookAPI.Mapping;
 using NUnit.Framework;
 
-namespace NotebookAPITests.HandlerTests.Notes
+namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Commands
 {
     [TestFixture]
-    public class UpdateNoteHandlerTests
+    public class UpdateNoteTests
     {
         private DbContextOptions<DataContext> _options;
         private IMapper _mapper;
@@ -40,7 +40,7 @@ namespace NotebookAPITests.HandlerTests.Notes
         }
 
         [Test]
-        public void UpdateNoteHandler_UpdateFirstNote_ShouldReturnNewNoteContent()
+        public void UpdateNote_UpdateFirstNote_ShouldReturnNewNoteContent()
         {
             var firstNoteId = 1;
             var newNoteContent = "update";
@@ -63,7 +63,7 @@ namespace NotebookAPITests.HandlerTests.Notes
         }
         
         [Test]
-        public void UpdateNoteHandler_ChangeNoteCategoriesFromOneToTwo_ShouldReturnListWithTwoCategories()
+        public void UpdateNote_ChangeNoteCategoriesFromOneToTwo_ShouldReturnListWithTwoCategories()
         {
             var noteIdWithOneCategory = 3;
             var expectedNumberOfCategories = 2;
@@ -92,7 +92,7 @@ namespace NotebookAPITests.HandlerTests.Notes
         }
         
         [Test]
-        public void UpdateNoteHandler_UpdateNotExistingNote_ShouldReturnNull()
+        public void UpdateNote_UpdateNotExistingNote_ShouldReturnNull()
         {
             var notExistingNote = 10;
             var newNoteContent = "update";

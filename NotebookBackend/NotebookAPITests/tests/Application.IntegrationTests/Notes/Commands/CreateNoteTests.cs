@@ -9,10 +9,10 @@ using NotebookAPI.Handlers.Notes;
 using NotebookAPI.Mapping;
 using NUnit.Framework;
 
-namespace NotebookAPITests.HandlerTests.Notes
+namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Commands
 {
     [TestFixture]
-    public class CreateNoteHandlerTests
+    public class CreateNoteTests
     {
         private DbContextOptions<DataContext> _options;
         private IMapper _mapper;
@@ -40,7 +40,7 @@ namespace NotebookAPITests.HandlerTests.Notes
         }
 
         [Test]
-        public void CreateNoteHandler_CreateNewNote_ShouldHaveNewNoteInDatabase()
+        public void CreateNote_CreateNewNote_ShouldHaveNewNoteInDatabase()
         {
             var expectedNewNotesLength = 4;
             var newNoteContent = "my new note";
@@ -62,7 +62,7 @@ namespace NotebookAPITests.HandlerTests.Notes
         }
         
         [Test]
-        public void CreateNoteHandler_CreateNewNoteWithContent_ShouldReturnNewNoteContent()
+        public void CreateNote_CreateNewNoteWithContent_ShouldReturnNewNoteContent()
         {
             var newNoteContent = "my new note";
 
@@ -84,7 +84,7 @@ namespace NotebookAPITests.HandlerTests.Notes
         }
         
         [Test]
-        public void CreateNoteHandler_CreateNewNoteWithCategories_ShouldReturnListWithNoteCategories()
+        public void CreateNote_CreateNewNoteWithCategories_ShouldReturnListWithNoteCategories()
         {
             var expectedCategoriesListLength = 1;
             var newNoteContent = "my new note";
