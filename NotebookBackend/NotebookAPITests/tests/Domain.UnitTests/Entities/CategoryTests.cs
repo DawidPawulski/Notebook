@@ -4,7 +4,7 @@ using NotebookAPI.Data;
 using NotebookAPI.Models;
 using NUnit.Framework;
 
-namespace NotebookAPITests.tests.Domain.UnitTests.ModelsTests
+namespace NotebookAPITests.tests.Domain.UnitTests.Entities
 {
     [TestFixture]
     public class CategoryTests
