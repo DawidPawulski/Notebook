@@ -30,9 +30,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="src\Application" />
-      <Folder Include="src\Domain" />
-      <Folder Include="src\Infrastructure" />
+      <Folder Include="src\Application\Notes\Contracts\Request" />
+      <Folder Include="src\Domain\Common" />
     </ItemGroup>
 
 

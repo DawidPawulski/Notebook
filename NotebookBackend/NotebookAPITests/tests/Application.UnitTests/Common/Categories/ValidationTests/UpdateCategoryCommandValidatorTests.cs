@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
-using NotebookAPI.Commands.Categories;
-using NotebookAPI.Validation.Categories;
+using NotebookAPI.Application.Categories.Commands.UpdateCategory;
 using NUnit.Framework;
 
 namespace NotebookAPITests.tests.Application.UnitTests.Common.Categories.ValidationTests

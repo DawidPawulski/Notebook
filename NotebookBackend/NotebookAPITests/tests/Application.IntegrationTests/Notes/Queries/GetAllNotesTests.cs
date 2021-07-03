@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using NotebookAPI.Handlers.Notes;
-using NotebookAPI.Mapping;
-using NotebookAPI.Queries.Notes;
+using NotebookAPI.Application.Common.Mappings;
+using NotebookAPI.Application.Notes.Queries.GetAllNotes;
 using NUnit.Framework;
 
 namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Queries

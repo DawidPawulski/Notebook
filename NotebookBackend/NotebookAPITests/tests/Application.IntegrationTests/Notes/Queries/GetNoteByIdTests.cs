@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using NotebookAPI.Contracts.Responses;
-using NotebookAPI.Handlers.Notes;
-using NotebookAPI.Mapping;
-using NotebookAPI.Queries.Notes;
+using NotebookAPI.Application.Common.Mappings;
+using NotebookAPI.Application.Notes.Contracts.Response;
+using NotebookAPI.Application.Notes.Queries.GetAllNotes;
+using NotebookAPI.Application.Notes.Queries.GetNoteById;
 using NUnit.Framework;
 
 namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Queries

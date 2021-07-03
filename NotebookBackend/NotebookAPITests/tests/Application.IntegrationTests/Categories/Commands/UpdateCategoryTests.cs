@@ -1,9 +1,8 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using NotebookAPI.Commands.Categories;
-using NotebookAPI.Data;
-using NotebookAPI.Handlers.Categories;
-using NotebookAPI.Mapping;
+using NotebookAPI.Application.Categories.Commands.UpdateCategory;
+using NotebookAPI.Application.Common.Mappings;
+using NotebookAPI.Infrastructure.Persistence;
 using NUnit.Framework;
 
 namespace NotebookAPITests.tests.Application.IntegrationTests.Categories.Commands

@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
-using NotebookAPI.Commands.Notes;
-using NotebookAPI.Validation.Notes;
+using NotebookAPI.Application.Notes.Commands.CreateNote;
 using NUnit.Framework;
 
 namespace NotebookAPITests.tests.Application.UnitTests.Common.Notes.ValidationTests

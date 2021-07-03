@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
-using NotebookAPI.Handlers.Categories;
-using NotebookAPI.Mapping;
-using NotebookAPI.Queries.Categories;
+using NotebookAPI.Application.Categories.Queries.GetAllCategories;
+using NotebookAPI.Application.Common.Mappings;
 using NUnit.Framework;
 
 namespace NotebookAPITests.tests.Application.IntegrationTests.Categories.Queries

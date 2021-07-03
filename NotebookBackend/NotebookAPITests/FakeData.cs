@@ -1,5 +1,5 @@
-using NotebookAPI.Data;
-using NotebookAPI.Models;
+using NotebookAPI.Domain.Entities;
+using NotebookAPI.Infrastructure.Persistence;
 
 namespace NotebookAPITests
 {

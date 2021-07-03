@@ -1,7 +1,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using NotebookAPI.Data;
-using NotebookAPI.Models;
+using NotebookAPI.Domain.Entities;
+using NotebookAPI.Infrastructure.Persistence;
 using NUnit.Framework;
 
 namespace NotebookAPITests.tests.Domain.UnitTests.Entities
