@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ["NotebookAPI/NotebookAPI.csproj", "NotebookAPI/"]
+COPY ["./NotebookAPI/NotebookAPI.csproj", "NotebookAPI/"]
 RUN dotnet restore "NotebookAPI/NotebookAPI.csproj"
 COPY . .
 WORKDIR "/src/NotebookAPI"
