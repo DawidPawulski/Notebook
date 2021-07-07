@@ -1,13 +1,10 @@
-using FluentValidation;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NotebookAPI.Data;
-using NotebookAPI.PipelineBehaviors;
+using NotebookAPI.Application;
+using NotebookAPI.Infrastructure;
 using Serilog;
 
 namespace NotebookAPI
@@ -28,31 +25,9 @@ namespace NotebookAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Enable CORS
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()
-                    .AllowAnyMethod().AllowAnyHeader());
-            });
-            
-            services.AddDbContext<DataContext>(p =>
-                p.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
-                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
-            
             services.AddControllers();
-
-            services.AddMediatR(typeof(Startup).Assembly);
-
-            // Register the Swagger generator, defining 1 or more Swagger documents
-            services.AddSwaggerGen();
-            
-            services.AddControllers().AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
-            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
-            services.AddAutoMapper(typeof(Startup));
+            services.AddApplication();
+            services.AddInfrastructure(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
