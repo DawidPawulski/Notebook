@@ -21,7 +21,7 @@ namespace NotebookAPITests.tests.Application.IntegrationTests.Notes.Queries
         {
             var testConfiguration = new Dictionary<string, string>
             {
-                {"ConnectionStrings:DefaultConnection", "Server=127.0.0.1; port=5432; user id = postgres; password = coderslab; database=notebookDB; pooling = true"},
+                {"ConnectionStrings:DefaultConnection", ""},
                 {"AllowedHosts", "*"}
             };
 
